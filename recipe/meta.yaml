@@ -12,20 +12,20 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win or not py2k]
 
 requirements:
   build:
     - python
     - setuptools
-    - boost 1.65.*
+    - boost 1.66.0
     - gsl 2.1
     - libobjcryst >=2017.1.1,2017.1.*
     - scons
     - toolchain
   run:
-    - boost 1.65.*
+    - boost 1.66.0
     - gsl >=2.1
     - libobjcryst >=2017.1.1,2017.1.*
 
