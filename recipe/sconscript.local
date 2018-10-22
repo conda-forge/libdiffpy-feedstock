@@ -1,0 +1,9 @@
+# Customize scons build environment.
+
+import os
+
+Import('env')
+
+env['CXX'] = os.environ['CXX']
+
+# vim: ft=python
