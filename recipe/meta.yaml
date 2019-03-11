@@ -1,6 +1,6 @@
 {% set name = "libdiffpy" %}
-{% set version = "1.3.4" %}
-{% set sha256 = "22ccda634834a77424dbaee6d619fd31e11adde3410d268916aceaeedfe0fcc9" %}
+{% set version = "1.4.0" %}
+{% set sha256 = "0b08e161e8f2ed517ace9223c0315258c492c626d84dd06ff23ad9293c16e161" %}
 
 package:
   name: {{ name|lower }}
@@ -12,24 +12,23 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1001
-  skip: True  # [win or not py2k]
+  number: 0
+  skip: True  # [win]
+  run_exports:
+    - {{ pin_subpackage('libdiffpy', max_pin='x.x') }}
 
 requirements:
   build:
-    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-  host:
-    - python
-    - setuptools
-    - boost
-    - gsl
-    - libobjcryst >=2017.1.1,2017.1.*
     - scons
-  run:
-    - boost
+  host:
+    - libboost
     - gsl
-    - libobjcryst >=2017.1.1,2017.1.*
+    - libobjcryst 2017.2.*
+  run:
+    # NOTE libobjcryst is implicitly added by libobjcryst run_exports
+    - libboost
+    - gsl
 
 test:
   commands:
@@ -39,7 +38,6 @@ about:
   home: https://github.com/diffpy/libdiffpy
   summary: C++ calculators of PDF, bond valence sum and other pair quantities.
   license: Modified BSD
-  license_file: BSD
   license_file: LICENSE.txt
 
 extra:

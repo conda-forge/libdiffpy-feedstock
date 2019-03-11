@@ -1,19 +1,17 @@
 boost:
 - 1.68.0
-build_number_decrement:
-- '1000'
 c_compiler:
-- toolchain_c
+- gcc
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- toolchain_cxx
+- gxx
 docker_image:
-- condaforge/linux-anvil
+- condaforge/linux-anvil-comp7
 gsl:
-- '2.2'
+- '2.4'
 pin_run_as_build:
   boost:
     max_pin: x.x.x
@@ -24,10 +22,3 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - '2.7'
-zip_keys:
-- - c_compiler
-  - cxx_compiler
-  - channel_sources
-  - channel_targets
-  - docker_image
-  - build_number_decrement
