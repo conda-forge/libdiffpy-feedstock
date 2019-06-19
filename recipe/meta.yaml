@@ -1,6 +1,6 @@
 {% set name = "libdiffpy" %}
 {% set version = "1.4.0" %}
-{% set sha256 = "0b08e161e8f2ed517ace9223c0315258c492c626d84dd06ff23ad9293c16e161" %}
+{% set sha256 = "d89351286881b18abcc413a2e27e94cc89124dedf69c9a095b9052179f8878c4" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win]
   run_exports:
     - {{ pin_subpackage('libdiffpy', max_pin='x.x') }}
