@@ -20,13 +20,15 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
-  host:
     - scons
+  host:
+    - boost
+    - gsl
+    - libobjcryst
   run:
     # NOTE libobjcryst is implicitly added by libobjcryst run_exports
     - boost
     - gsl
-    - libobjcryst
 
 test:
   commands:
