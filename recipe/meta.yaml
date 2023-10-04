@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 4
+  number: 5
   skip: True  # [win]
   run_exports:
     - {{ pin_subpackage('libdiffpy', max_pin='x.x') }}
@@ -22,12 +22,12 @@ requirements:
     - {{ compiler('cxx') }}
     - scons
   host:
-    - boost
+    - libboost-python-devel
     - gsl
     - libobjcryst
   run:
     # NOTE libobjcryst is implicitly added by libobjcryst run_exports
-    - boost
+    - libboost-python-devel
     - gsl
 
 test:
