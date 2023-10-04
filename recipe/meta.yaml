@@ -22,12 +22,11 @@ requirements:
     - {{ compiler('cxx') }}
     - scons
   host:
-    - libboost-python-devel
+    - libboost-devel
     - gsl
     - libobjcryst
   run:
     # NOTE libobjcryst is implicitly added by libobjcryst run_exports
-    - libboost-python-devel
     - gsl
 
 test:
