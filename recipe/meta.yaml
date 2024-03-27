@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 5
+  number: 6
   skip: True  # [win]
   run_exports:
     - {{ pin_subpackage('libdiffpy', max_pin='x.x') }}
@@ -20,6 +20,7 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
     - scons
   host:
     - libboost-devel
