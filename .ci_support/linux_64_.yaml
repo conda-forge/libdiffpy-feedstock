@@ -17,6 +17,6 @@ docker_image:
 gsl:
 - '2.7'
 libboost_devel:
-- '1.84'
+- '1.86'
 target_platform:
 - linux-64

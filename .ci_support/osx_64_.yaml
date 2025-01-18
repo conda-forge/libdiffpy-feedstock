@@ -17,7 +17,7 @@ cxx_compiler_version:
 gsl:
 - '2.7'
 libboost_devel:
-- '1.84'
+- '1.86'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 target_platform:
