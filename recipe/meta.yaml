@@ -12,8 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 8
-  skip: True  # [win]
+  number: 9
   run_exports:
     - {{ pin_subpackage('libdiffpy', max_pin='x.x') }}
 
@@ -32,7 +31,8 @@ requirements:
 
 test:
   commands:
-    - test -f $PREFIX/lib/libdiffpy${SHLIB_EXT}
+    - test -f $PREFIX/lib/libdiffpy${SHLIB_EXT} # [not win]
+    - if not exist %LIBRARY_LIB%\\libdiffpy.lib exit 1 # [win]
 
 about:
   home: https://github.com/diffpy/libdiffpy
