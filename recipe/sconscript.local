@@ -1,14 +1,21 @@
-# Customize scons build environment.
+# Customize SCons build environment for conda-forge
 
 Import('env')
 
 import os
 
-# Apply environment settings for Anaconda compilers
 env.Replace(CXX=os.environ['CXX'])
-env.MergeFlags(os.environ['CFLAGS'])
-env.MergeFlags(os.environ['CPPFLAGS'])
-env.MergeFlags(os.environ['CXXFLAGS'])
-env.MergeFlags(os.environ['LDFLAGS'])
+
+raw_ld = os.environ.get('LDFLAGS', '')
+PREFIX_DIR = os.environ['PREFIX']
+expanded_ld = raw_ld.replace('$PREFIX', PREFIX_DIR)
+
+env.MergeFlags(expanded_ld)
+for var in ('CFLAGS','CPPFLAGS','CXXFLAGS'):
+    env.MergeFlags(os.environ.get(var, ''))
+
+env.Prepend(CCFLAGS=[f'-isystem{PREFIX_DIR}/include'])
+
+env.Append(LIBPATH=[f'{PREFIX_DIR}/lib'])
 
 # vim: ft=python
