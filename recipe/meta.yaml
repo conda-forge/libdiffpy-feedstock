@@ -11,13 +11,6 @@ source:
 
 build:
   number: 0
-  # use your build scripts rather than inline script:
-  script: |
-    if [ -f build.sh ]; then
-      bash build.sh
-    else
-      call bld.bat
-    fi
 
 requirements:
   build:
@@ -31,12 +24,11 @@ requirements:
     - dlfcn-win32  # [win]
   run:
     - gsl
-    # libobjcryst run-exports itself
 
 test:
   commands:
-    - test -f $PREFIX/lib/libdiffpy${SHLIB_EXT}    # Unix
-    - if not exist %LIBRARY_LIB%\libdiffpy.lib exit 1  # Windows
+    - test -f $PREFIX/lib/libdiffpy${SHLIB_EXT}  # [not win]
+    - if not exist %LIBRARY_LIB%\libdiffpy.lib exit 1  # [win]
 
 about:
   home: https://github.com/diffpy/libdiffpy
