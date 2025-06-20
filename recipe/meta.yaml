@@ -28,7 +28,7 @@ requirements:
     - boost-cpp          # conda-forge name for header + libraries
     - gsl
     - libobjcryst ==2024.1.1
-    - dlfcn-win32        # for Windows builds
+    - dlfcn-win32  # [win]
   run:
     - gsl
     # libobjcryst run-exports itself
