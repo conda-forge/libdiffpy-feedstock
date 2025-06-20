@@ -1,5 +1,5 @@
 {% set name = "libdiffpy" %}
-{% set version = "1.4.1rc0" %}
+{% set version = "1.4.1rc1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/diffpy/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 6fd6b0213b6debec6d0a243d010b66a8aaaedda9173407c3602624365b257013
+  sha256: e4338b00d5ed77cafeb487a1a9071344a5fb46d034825bba697efbc6fdde05bd
 
 build:
   number: 0
@@ -18,7 +18,7 @@ requirements:
     - {{ stdlib('c') }}
     - scons
   host:
-    - boost-cpp
+    - libboost-devel
     - gsl
     - libobjcryst ==2024.1.1
     - dlfcn-win32  # [win]
