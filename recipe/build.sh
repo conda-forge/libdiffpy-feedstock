@@ -5,6 +5,8 @@ MYNCPU=$(( CPU_COUNT > 8 ? 8 : CPU_COUNT ))
 
 # drop linker flags that spuriously remove linkage with libgslcblas
 LDFLAGS="${LDFLAGS/-Wl,-dead_strip_dylibs/}"
+eval "LDFLAGS=\"$LDFLAGS\"" # force $PREFIX to be expanded
+export LDFLAGS
 
 # use macos SDK
 if [[ $build_platform == osx-64 ]]; then
