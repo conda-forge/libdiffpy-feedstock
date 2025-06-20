@@ -18,7 +18,7 @@ requirements:
     - {{ stdlib('c') }}
     - scons
   host:
-    - boost-cpp          # conda-forge name for header + libraries
+    - boost-cpp
     - gsl
     - libobjcryst ==2024.1.1
     - dlfcn-win32  # [win]
@@ -28,7 +28,7 @@ requirements:
 test:
   commands:
     - test -f $PREFIX/lib/libdiffpy${SHLIB_EXT}  # [not win]
-    - if not exist %LIBRARY_LIB%\libdiffpy.lib exit 1  # [win]
+    - if not exist %LIBRARY_LIB%\\diffpy.lib exit 1  # [win]
 
 about:
   home: https://github.com/diffpy/libdiffpy
