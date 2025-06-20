@@ -1,44 +1,47 @@
 {% set name = "libdiffpy" %}
-{% set version = "1.4.0" %}
-{% set sha256 = "d89351286881b18abcc413a2e27e94cc89124dedf69c9a095b9052179f8878c4" %}
+{% set version = "1.4.1rc0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/diffpy/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 10ac3ec0a47a2d9934656d71a72b0b123800a8a3e76182eec823a797746367e3
 
 build:
-  number: 9
-  run_exports:
-    - {{ pin_subpackage('libdiffpy', max_pin='x.x') }}
+  number: 0
+  # use your build scripts rather than inline script:
+  script: |
+    if [ -f build.sh ]; then
+      bash build.sh
+    else
+      call bld.bat
+    fi
 
 requirements:
   build:
     - {{ compiler('cxx') }}
-    - {{ stdlib("c") }}
+    - {{ stdlib('c') }}
     - scons
   host:
-    - libboost-devel
+    - boost-cpp          # conda-forge name for header + libraries
     - gsl
     - libobjcryst ==2024.1.1
+    - dlfcn-win32        # for Windows builds
   run:
-    # NOTE libobjcryst is implicitly added by libobjcryst run_exports
     - gsl
+    # libobjcryst run-exports itself
 
 test:
   commands:
-    - test -f $PREFIX/lib/libdiffpy${SHLIB_EXT}  # [not win]
-    - if not exist %LIBRARY_LIB%\\libdiffpy.lib exit 1  # [win]
+    - test -f $PREFIX/lib/libdiffpy${SHLIB_EXT}    # Unix
+    - if not exist %LIBRARY_LIB%\libdiffpy.lib exit 1  # Windows
 
 about:
   home: https://github.com/diffpy/libdiffpy
-  summary: C++ calculators of PDF, bond valence sum and other pair quantities.
+  summary: "C++ calculators of PDF, bond valence sum and other pair quantities."
   license: BSD-3-Clause
-  license_family: BSD
   license_file: LICENSE.txt
   doc_url: https://www.diffpy.org/libdiffpy/
   dev_url: https://github.com/diffpy/libdiffpy
@@ -48,3 +51,4 @@ extra:
     - pavoljuhas
     - sbillinge
     - st3107
+    - Tieqiong
