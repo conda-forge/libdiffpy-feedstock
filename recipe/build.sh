@@ -6,10 +6,13 @@ MYNCPU=$(( CPU_COUNT > 8 ? 8 : CPU_COUNT ))
 # drop linker flags that spuriously remove linkage with libgslcblas
 LDFLAGS="${LDFLAGS/-Wl,-dead_strip_dylibs/}"
 
-#debug
+# debug dump of what's actually installed
 echo "===== PREFIX is: $PREFIX ====="
 echo "===== Listing $PREFIX/lib ====="
 ls -al "$PREFIX/lib" || true
+echo "================================"
+echo "===== Grep for libobjcryst in $PREFIX/lib ====="
+ls -1 "$PREFIX/lib" | grep -i objcryst || echo ">>> libobjcryst NOT FOUND <<<"
 echo "================================"
 
 # use macos SDK
