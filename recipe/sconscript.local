@@ -18,4 +18,8 @@ env.Prepend(CCFLAGS=[f'-isystem{PREFIX_DIR}/include'])
 
 env.Append(LIBPATH=[f'{PREFIX_DIR}/lib'])
 
+for lf in ('LINKFLAGS','SHLINKFLAGS'):
+    if lf in env:
+        env[lf] = [f.replace('$PREFIX', PREFIX_DIR) for f in env[lf]]
+
 # vim: ft=python
