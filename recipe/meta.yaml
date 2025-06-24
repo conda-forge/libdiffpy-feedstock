@@ -1,5 +1,5 @@
 {% set name = "libdiffpy" %}
-{% set version = "1.4.1rc1" %}
+{% set version = "1.4.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/diffpy/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: e4338b00d5ed77cafeb487a1a9071344a5fb46d034825bba697efbc6fdde05bd
+  sha256: 2b3411f9371c9007dc6e5d18ed0297a0c44974c93788aa4bf2c6f5f8563e8ce3
 
 build:
   number: 0
